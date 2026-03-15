@@ -11,7 +11,7 @@ class Database {
         this.connect();
     }
 
-    public static getInstance(): Database{
+    public static async getInstance(): Promise<Database> {
         if (!Database.instance){
             Database.instance = new Database();
        }
@@ -21,9 +21,9 @@ class Database {
     private async connect(): Promise<void> {
         try {
             await mongoose.connect(this.mongoUrl);
-            console.log("=====MongoDB connected successfully to VocalHub");
+            console.log("!!!!! MongoDB connected successfully to VocalHub");
         } catch (error) {
-            console.error("MongoDB connection error: ", error)
+            console.error("????? MongoDB connection error: ", error)
             process.exit(1);
         }
     }
