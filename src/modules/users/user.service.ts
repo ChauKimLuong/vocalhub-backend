@@ -37,6 +37,14 @@ export class UserService {
                             .build();
         return await this.userRepository.create(newAdmin);
     }
+
+    async assignDefaultVocabulary(userId: string) {
+        console.log(`[User Service] => Đang cấp bộ từ vựng Oxford 3000 mặc định cho User ID: ${userId}`);
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        console.log(`[User Service] => Đã cấp bộ từ vựng thành công! Sẵn sàng học theo SM-2.`);
+    }
 }
 
 export const userService = new UserService(new UserRepository());

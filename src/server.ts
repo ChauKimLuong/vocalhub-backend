@@ -3,12 +3,15 @@ import dotenv from "dotenv";
 import Database from "./config/database";
 import rootRouter from "./routes/index.route";
 import cors from "cors";
+import './modules/notifications/listeners';
+import './modules/users/listeners';
 
 dotenv.config();
 
 class Server {
     private app: Application;
     private port: number | string;
+
 
     constructor() {
         this.app = express();

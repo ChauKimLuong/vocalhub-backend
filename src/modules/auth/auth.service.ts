@@ -1,3 +1,5 @@
+import { EVENTS } from "../../utils/event.constant";
+import { EventBus, eventBus } from "../../utils/eventBus";
 import { UserService, userService } from "../users/user.service"
 import bcrypt from "bcrypt"
 
@@ -25,6 +27,8 @@ export class AuthService {
             ...data,
             password: hashedPassword,
         });
+
+        eventBus.emit(EVENTS.USER_REGISTERED, newUser);
 
         return {
             user: newUser,
