@@ -11,6 +11,5 @@ export class UserRoute extends BaseRoute{
         const controller = new UserController(service);
 
         this.router.get("/", controller.getAll);
-        this.router.post("/create", controller.register);
     }
 }

@@ -1,6 +1,6 @@
 import { UserService } from "./user.service";
 import { Request, Response } from "express";
-
+import bcrypt from "bcrypt";
 export class UserController {
     private userService: UserService;
 
@@ -18,38 +18,13 @@ export class UserController {
         }
     };
 
-    public register = async (req: Request, res: Response) => {
-        try {
-            const { email, username } = req.body;
+    // Dành cho User tự xem thông tin của mình (sau khi ghép với Middleware Auth)
+    public getProfile = async (req: Request, res: Response) => {
+        // ... logic lấy profile dựa vào ID lấy từ token
+    };
 
-            const emailExist = await this.userService.findUserByEmail(email);
-            if (emailExist) {
-                return res.status(400).json({
-                    success: false,
-                    message: "Email already exists",
-                });
-            }
-
-            const usernameExist =
-                await this.userService.findUserByUsername(username);
-            if (usernameExist) {
-                return res.status(400).json({
-                    success: false,
-                    message: "Username already exists",
-                });
-            }
-
-            const user = await this.userService.registerBasicUser(req.body);
-
-            return res.status(201).json({
-                success: true,
-                user,
-            });
-        } catch (error: any) {
-            return res.status(400).json({
-                success: false,
-                message: error.message,
-            });
-        }
+    // Dành cho việc cập nhật avatar, username...
+    public updateProfile = async (req: Request, res: Response) => {
+        // ... logic update
     };
 }

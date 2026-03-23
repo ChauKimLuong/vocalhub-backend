@@ -18,8 +18,8 @@ export class UserService {
         return this.userRepository.findByEmail(email)
     }
 
-    public async findUserByUsername(email: string){
-        return this.userRepository.findByUsername(email)
+    public async findUserByUsername(username: string){
+        return this.userRepository.findByUsername(username)
     }
 
     public async registerBasicUser(data: any){
@@ -38,3 +38,5 @@ export class UserService {
         return await this.userRepository.create(newAdmin);
     }
 }
+
+export const userService = new UserService(new UserRepository());

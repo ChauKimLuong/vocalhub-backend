@@ -41,5 +41,4 @@ export class UserBuilder {
     build(): Partial<IUser> {
         return this.user;
     }
-
 }
