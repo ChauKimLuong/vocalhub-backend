@@ -39,7 +39,7 @@ class Server {
         this.app.listen(this.port, () => {
             console.log(`=========================================`);
             console.log(`🚀 VocalHub Server is flying on port ${this.port}`);
-            console.log(`🔗 API: http://localhost:${this.port}/api/v1/words`);
+            console.log(`🔗 API: http://localhost:${this.port}/api/v1/`);
             console.log(`=========================================`);
         });
     }

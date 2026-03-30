@@ -14,8 +14,8 @@ class Database {
     public static async getInstance(): Promise<Database> {
         if (!Database.instance){
             Database.instance = new Database();
-       }
-       return Database.instance;
+        }
+        return Database.instance;
     }
 
     private async connect(): Promise<void> {
