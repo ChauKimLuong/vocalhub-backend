@@ -18,6 +18,16 @@ export class WordController {
         }
     }
 
+    public search = async (req: Request, res: Response) => {
+        try {
+            const data = await this.wordService.search(req.body.word);
+            
+            res.status(200).json({ success: true, count: data.length, data });
+        } catch (error: any) {
+            res.status(500).json({ success: false, message: error.message });
+        }
+    }
+
     public create = async (req: Request, res: Response) => {
         try {
             const data = this.wordService.createWord(req.body);
